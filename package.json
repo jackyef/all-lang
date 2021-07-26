@@ -1,4 +1,7 @@
 {
   "name": "all-lang",
-  "description": "A repo containing all programming languages recognized by GitHub"
+  "description": "A repo containing all programming languages recognized by GitHub",
+  "dependencies": {
+    "js-yaml": "^4.1.0"
+  }
 }
