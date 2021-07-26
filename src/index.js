@@ -7,6 +7,11 @@ const langsPath = path.join(__dirname, "..", "langs");
 // Get document, or throw exception on error
 try {
   const doc = yaml.load(fs.readFileSync(path.join(__dirname, "languages.yml"), "utf8"));
+  
+  if (!fs.existsSync(langsPath)) {
+    fs.mkdirSync(langsPath)
+  }
+  
   Object.keys(doc).forEach(lang => {
     const extension = doc[lang] && doc[lang].extensions && doc[lang].extensions[0]; 
 
@@ -15,7 +20,7 @@ try {
     const fileName = `${lang}${extension}`;
 
     if (!fs.existsSync(path.join(langsPath, fileName))) {
-      fs.writeFileSync(path.join(langsPath, fileName), '');
+      fs.writeFileSync(path.join(langsPath, fileName), '\n');
     }
   })
 } catch (e) {
